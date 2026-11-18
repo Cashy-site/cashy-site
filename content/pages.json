@@ -17,7 +17,6 @@
     "mascot": "/art/cashy-arcade.webp",
     "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, playing a Cashy Arcade cabinet.",
     "coming": [
-      "Weekly top 10 leaderboard",
       "Past winners"
     ],
     "backLabel": "Back to the Arcade",
@@ -111,6 +110,11 @@
         "DM @cashybase your Leaderboard ID. We check it against your run and send the prize."
       ],
       "safety": "Your Leaderboard ID is private. Only ever send it to @cashybase. We never ask for seed phrases or payments."
+    },
+    "leaderboards": {
+      "title": "Leaderboards",
+      "line": "Who's on top this week, game by game. Top scores win prizes.",
+      "pick": "Choose a game"
     }
   },
   "roadmap": {

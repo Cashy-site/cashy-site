@@ -30,7 +30,7 @@ const toggle = (on: boolean) =>
 const MEDAL = ["bg-green text-ink", "bg-blue-pale text-ink", "bg-blue-mid text-paper"];
 
 /** The live top 10 for one game, from the Cashy leaderboard API. Shown under the game on its page. */
-export function Leaderboard({ game, boards, prizes }: { game: string; boards: Board[]; prizes: string }) {
+export function Leaderboard({ game, boards, prizes, title = copy.title }: { game: string; boards: Board[]; prizes: string; title?: string }) {
   const [board, setBoard] = useState(boards[0].id);
   const [period, setPeriod] = useState<Period>("week");
   const key = `${board}|${period}`;
@@ -68,7 +68,7 @@ export function Leaderboard({ game, boards, prizes }: { game: string; boards: Bo
       <div className="rounded-2xl border-[3px] border-blue bg-ink/85 p-5 shadow-[0_4px_36px_rgb(0_0_255_/_0.35)] md:p-7">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
           <h2 id={`${game}-leaderboard`} className="neon-word text-[clamp(2.25rem,5vw,3.25rem)]">
-            {copy.title}
+            {title}
           </h2>
           <p className="text-sm text-mist">
             {period === "week" && state.weekEnds ? `${copy.resetsIn} ${resetsIn(state.weekEnds)} · ` : ""}
