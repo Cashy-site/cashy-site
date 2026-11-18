@@ -5,16 +5,22 @@ type HypeProps = {
   eyebrow: string;
   title: string;
   lede: string;
+  story: string[];
   points: { title: string; text: string }[];
 };
 
-export function Hype({ eyebrow, title, lede, points }: HypeProps) {
+export function Hype({ eyebrow, title, lede, story, points }: HypeProps) {
   return (
     <section className="bg-black px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto w-full max-w-[1500px]">
         <p className="inline-block rounded-full bg-paper px-3.5 py-1.5 font-display text-sm font-bold tracking-[0.2em] text-blue uppercase">{eyebrow}</p>
         <h2 className="neon-word mt-5 text-[clamp(3rem,9vw,8rem)] text-balance">{title}</h2>
         <p className="mt-8 max-w-2xl text-lg text-mist md:text-xl">{lede}</p>
+        {story.map((paragraph) => (
+          <p key={paragraph} className="mt-5 max-w-2xl text-lg text-mist md:text-xl">
+            {paragraph}
+          </p>
+        ))}
 
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
           {points.map((point) => (

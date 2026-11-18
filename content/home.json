@@ -18,9 +18,7 @@
     ],
     "story": [
       "Base City went quiet. The builders moved on, the streets emptied, and the lights in the towers went out one by one.",
-      "Then a single banknote walked in. Cashy, the Base Note, denomination 8453: the chain ID of Base itself. He isn’t here to be spent. He’s here to rebuild.",
-      "Every $CASHY trade runs on Feel.cash, in a pool paired with NVDAc, Coinbase’s tokenized Nvidia stock. 2.14% of every trade goes back to holders, paid in NVDA, about once a day. Each payout is a Payday, and each Payday turns another light back on in Base City.",
-      "As more Base projects move in, they get their own building, and their characters take over the streets. One block at a time, the quiet city becomes the Base Renaissance."
+      "Then a single banknote walked in. Cashy, the Base Note, denomination 8453: the chain ID of Base itself. He isn’t here to be spent. He’s here to rebuild."
     ],
     "pill": "denomination 8453",
     "mascot": "/art/cashy-portrait.webp",
@@ -71,6 +69,10 @@
         "title": "Built on Base",
         "text": "Launched on Feel.cash and paired with NVDAc. Where people meet stocks, on Base."
       }
+    ],
+    "story": [
+      "Every $CASHY trade runs on Feel.cash, in a pool paired with NVDAc, Coinbase’s tokenized Nvidia stock. 2.14% of every trade goes back to holders, paid in NVDA, about once a day. Each payout is a Payday, and each Payday turns another light back on in Base City.",
+      "As more Base projects move in, they get their own building, and their characters take over the streets. One block at a time, the quiet city becomes the Base Renaissance."
     ]
   }
 }
