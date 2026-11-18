@@ -111,15 +111,15 @@ export function AboutCoin({ headline, story, pill, mascot, mascotAlt, printerLab
         </div>
 
         <div className="mt-20 md:mt-28">
-          <p className="inline-block rounded-full bg-paper px-3.5 py-1.5 font-display text-sm font-bold tracking-[0.2em] text-blue uppercase">{why.eyebrow}</p>
-          <ol className="mt-8 grid gap-5 md:grid-cols-2">
+          <p className="inline-block rounded-full bg-paper px-6 py-2.5 font-display text-2xl font-extrabold tracking-[0.18em] text-blue uppercase md:px-8 md:py-3 md:text-4xl">{why.eyebrow}</p>
+          <ol className="mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
             {why.cards.map((card, i) => (
-              <li key={card.title} className="rounded-2xl border border-t-4 border-paper/10 border-t-blue bg-night/60 p-6 md:p-8">
-                <span aria-hidden className="block font-display text-5xl leading-none font-bold text-green md:text-6xl">
+              <li key={card.title} className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-t-4 border-paper/10 border-t-blue bg-night/60 p-6 text-center md:aspect-square md:p-8">
+                <span aria-hidden className="block font-display text-6xl leading-none font-bold text-green md:text-7xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 font-display text-2xl font-bold text-paper md:text-3xl">{card.title}</h3>
-                <p className="mt-3 text-lg text-mist">{card.text}</p>
+                <h3 className="mt-4 font-display text-2xl font-bold text-balance text-paper md:text-3xl">{card.title}</h3>
+                <p className="mt-3 text-lg text-balance text-mist">{card.text}</p>
               </li>
             ))}
           </ol>

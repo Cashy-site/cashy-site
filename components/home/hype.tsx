@@ -1,6 +1,5 @@
 import { BuyButton } from "@/components/ui/buy-button";
 import { FollowLink } from "@/components/ui/follow-link";
-import { cn } from "@/lib/utils";
 
 type HypeProps = {
   eyebrow: string;
@@ -8,9 +7,6 @@ type HypeProps = {
   lede: string;
   points: { title: string; text: string }[];
 };
-
-/** Each point gets one of the three Base blues along its top edge. */
-const accents = ["border-t-blue", "border-t-blue-mid", "border-t-blue-pale"];
 
 export function Hype({ eyebrow, title, lede, points }: HypeProps) {
   return (
@@ -21,8 +17,8 @@ export function Hype({ eyebrow, title, lede, points }: HypeProps) {
         <p className="mt-8 max-w-2xl text-lg text-mist md:text-xl">{lede}</p>
 
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
-          {points.map((point, i) => (
-            <li key={point.title} className={cn("rounded-2xl border border-t-4 border-paper/10 bg-night/60 p-6 md:p-8", accents[i % accents.length])}>
+          {points.map((point) => (
+            <li key={point.title} className="rounded-2xl border border-t-4 border-paper/10 border-t-blue bg-night/60 p-6 md:p-8">
               <h3 className="font-display text-2xl font-bold text-paper md:text-3xl">{point.title}</h3>
               <p className="mt-3 text-lg text-mist">{point.text}</p>
             </li>

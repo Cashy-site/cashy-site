@@ -90,7 +90,7 @@ export function HeroCashy({ src, alt, chipLabel, className }: { src: string; alt
         <div className="hero-cashy-lean">
           {/* TODO: final art. Nikita's new-look poses (idle, blink, side-eye, point) replace this one picture. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset(src)} alt={alt} width={900} height={925} loading="lazy" decoding="async" className="h-auto w-full [mask-image:linear-gradient(to_bottom,#000_80%,transparent)]" />
+          <img src={asset(src)} alt={alt} width={900} height={900} loading="lazy" decoding="async" className="h-auto w-full [mask-image:linear-gradient(to_bottom,#000_80%,transparent)]" />
         </div>
       </div>
 

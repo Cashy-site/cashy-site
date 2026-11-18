@@ -23,12 +23,16 @@
       "As more Base projects move in, they get their own building, and their characters take over the streets. One block at a time, the quiet city becomes the Base Renaissance."
     ],
     "pill": "denomination 8453",
-    "mascot": "/art/cashy-raygun.webp",
-    "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, grinning and holding a ray gun.",
+    "mascot": "/art/cashy-portrait.webp",
+    "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, grinning with his arms crossed.",
     "printerLabel": "NVDA",
     "why": {
       "eyebrow": "WHY NVDA",
       "cards": [
+        {
+          "title": "The AI money machine",
+          "text": "Nvidia is the name everyone connects with the AI boom. Cashy shares its trading fees in it."
+        },
         {
           "title": "Everyone knows it",
           "text": "Nvidia is a household name. Nobody needs it explained, from a trader in New York to a student in Lagos."
@@ -36,10 +40,6 @@
         {
           "title": "Same green",
           "text": "Nvidia green, Cashy green. The note was already wearing the colour."
-        },
-        {
-          "title": "The AI money machine",
-          "text": "Nvidia is the name everyone connects with the AI boom. Cashy shares its trading fees in it."
         },
         {
           "title": "Built on chips",

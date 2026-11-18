@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { JumpingCashy } from "@/components/roadmap/jumping-cashy";
 import { asset, cn } from "@/lib/utils";
 
 type Status = "done" | "in-progress" | "next" | "maybe";
-type Stop = { when: string; text: string; detail: string; status: string; unlocks?: string };
+type Stop = { text: string; detail: string; status: string; unlocks?: string };
 type Line = { phase: string; title: string; period: string; colour: string; items: Stop[] };
 
 /** Base palette only: one strong blue, a lighter one, a pale dashed one. */
 const COLOURS: Record<string, string> = { blue: "#0000ff", light: "#4d4dff", pale: "#c7c7ff" };
 const DASHED = new Set(["pale"]);
+/** The line label is a chip, because small text in Base blue on the dark map is too dim to read. */
+const CHIP_TEXT: Record<string, string> = { blue: "#ffffff", light: "#ffffff", pale: "#05070d" };
 const STATUS: Record<Status, string> = { done: "Done", "in-progress": "In progress", next: "Next", maybe: "Maybe" };
 
 // The drawn map: three rows that snake like a metro line (left to right, back, then right again).
@@ -107,12 +110,12 @@ export function MetroMap({ lines }: { lines: Line[] }) {
       <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-mist">
         {(["in-progress", "next", "maybe", "done"] as Status[]).map((s) => (
           <li key={s} className="flex items-center gap-2.5">
-            <Marker stop={{ when: "", text: "", detail: "", status: s }} colour={COLOURS.blue} />
+            <Marker stop={{ text: "", detail: "", status: s }} colour={COLOURS.blue} />
             {STATUS[s]}
           </li>
         ))}
         <li className="flex items-center gap-2.5">
-          <Marker stop={{ when: "", text: "", detail: "", status: "next", unlocks: "x" }} colour={COLOURS.blue} />
+          <Marker stop={{ text: "", detail: "", status: "next", unlocks: "x" }} colour={COLOURS.blue} />
           Unlocks a Base City building
         </li>
       </ul>
@@ -123,7 +126,7 @@ export function MetroMap({ lines }: { lines: Line[] }) {
           {lines.map((line, i) => (
             <div key={line.phase} className={cn("flex flex-col gap-2 transition-opacity duration-200", hoverLine !== null && hoverLine !== i && "opacity-40")}>
               <span className="font-display text-lg font-bold text-paper">
-                <span style={{ color: COLOURS[line.colour] }}>{line.phase}</span> {line.title}
+                <span className="mr-1.5 rounded-md px-2 py-0.5 text-base" style={{ background: COLOURS[line.colour], color: CHIP_TEXT[line.colour] }}>{line.phase}</span> {line.title}
               </span>
               <span className="text-sm text-mist">{line.period}</span>
               <Progress line={line} colour={COLOURS[line.colour]} />
@@ -159,13 +162,16 @@ export function MetroMap({ lines }: { lines: Line[] }) {
               return (
                 <div key={`${line.phase}-${k}`} className={cn("transition-opacity duration-200", dim && "opacity-40")}>
                   {isHere && (
-                    <span className="absolute -translate-x-1/2 rounded-full bg-paper px-2.5 py-1 font-display text-xs font-bold whitespace-nowrap text-blue" style={{ left: `${(x / W) * 100}%`, top: `${((y - 58) / H) * 100}%` }}>
-                      You are here
-                    </span>
+                    <>
+                      <span className="absolute -translate-x-1/2 rounded-full bg-paper px-2.5 py-1 font-display text-xs font-bold whitespace-nowrap text-blue" style={{ left: `${(x / W) * 100}%`, top: `${((y - 108) / H) * 100}%` }}>
+                        You are here
+                      </span>
+                      <JumpingCashy className="absolute -translate-x-1/2 -translate-y-full" style={{ left: `${(x / W) * 100}%`, top: `calc(${(y / H) * 100}% - 22px)` }} />
+                    </>
                   )}
                   <button
                     type="button"
-                    aria-label={`${stop.text}, ${stop.when}, ${STATUS[statusOf(stop)]}${stop.unlocks ? `, unlocks ${stop.unlocks}` : ""}`}
+                    aria-label={`${stop.text}, ${STATUS[statusOf(stop)]}${stop.unlocks ? `, unlocks ${stop.unlocks}` : ""}`}
                     onClick={(e) => open(i, k, e.currentTarget)}
                     onMouseEnter={() => setHoverLine(i)}
                     onMouseLeave={() => setHoverLine(null)}
@@ -178,7 +184,7 @@ export function MetroMap({ lines }: { lines: Line[] }) {
                   </button>
                   <div className="pointer-events-none absolute -translate-x-1/2 text-center" style={{ left: `${(x / W) * 100}%`, top: `${((y + 26) / H) * 100}%`, width: `${(width / W) * 100}%` }}>
                     <span className="block font-display text-[11px] font-bold tracking-wider text-mist uppercase">
-                      {stop.when} · {STATUS[statusOf(stop)]}
+                      {STATUS[statusOf(stop)]}
                     </span>
                     <span className="mt-0.5 block text-[13px] leading-snug font-semibold text-paper">{stop.text}</span>
                   </div>
@@ -212,29 +218,34 @@ export function MetroMap({ lines }: { lines: Line[] }) {
           return (
             <div key={line.phase} role="tabpanel" id={`roadmap-panel-${i}`} aria-labelledby={`roadmap-tab-${i}`} hidden={tab !== i} className="mt-5 rounded-2xl border border-blue/30 bg-[#070b24] p-5">
               <span className="font-display text-lg font-bold text-paper">
-                <span style={{ color: colour }}>{line.phase}</span> {line.title}
+                <span className="mr-1.5 rounded-md px-2 py-0.5 text-base" style={{ background: colour, color: CHIP_TEXT[line.colour] }}>{line.phase}</span> {line.title}
               </span>
               <span className="mt-1 block text-sm text-mist">{line.period}</span>
               <div className="mt-3">
                 <Progress line={line} colour={colour} />
               </div>
-              <ul className="relative mt-6 flex flex-col gap-6 pl-12">
+              <ul className="relative mt-14 flex flex-col gap-6 pl-12">
                 <span aria-hidden className={cn("absolute top-3 bottom-3 left-[18px] border-l-[6px]", DASHED.has(line.colour) && "border-dashed")} style={{ borderColor: colour }} />
                 {line.items.map((stop, k) => (
                   <li key={k} className="relative">
                     <button
                       type="button"
-                      aria-label={`${stop.text}, ${stop.when}, ${STATUS[statusOf(stop)]}${stop.unlocks ? `, unlocks ${stop.unlocks}` : ""}`}
+                      aria-label={`${stop.text}, ${STATUS[statusOf(stop)]}${stop.unlocks ? `, unlocks ${stop.unlocks}` : ""}`}
                       onClick={(e) => open(i, k, e.currentTarget)}
                       className="absolute top-0 -left-12 rounded-lg p-1.5"
                     >
                       <Marker stop={stop} colour={colour} />
                     </button>
                     <span className="block font-display text-[11px] font-bold tracking-wider text-mist uppercase">
-                      {stop.when} · {STATUS[statusOf(stop)]}
+                      {STATUS[statusOf(stop)]}
                     </span>
                     <span className="mt-0.5 block font-semibold text-paper">{stop.text}</span>
-                    {here.line === i && here.index === k && <span className="mt-1.5 inline-block rounded-full bg-paper px-2.5 py-1 font-display text-xs font-bold text-blue">You are here</span>}
+                    {here.line === i && here.index === k && (
+                      <>
+                        <JumpingCashy className="absolute -top-[31px] -left-[43px]" />
+                        <span className="mt-1.5 inline-block rounded-full bg-paper px-2.5 py-1 font-display text-xs font-bold text-blue">You are here</span>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -262,7 +273,7 @@ export function MetroMap({ lines }: { lines: Line[] }) {
             {pickedStop.text}
           </h2>
           <p className="mt-1 text-sm text-mist">
-            {pickedStop.when} · {STATUS[statusOf(pickedStop)]}
+            {STATUS[statusOf(pickedStop)]}
           </p>
           <h3 className="mt-5 font-display text-xs font-bold tracking-wider text-mist uppercase">What’s planned</h3>
           <p className="mt-2 leading-relaxed text-paper">{pickedStop.detail}</p>
