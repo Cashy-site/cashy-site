@@ -51,7 +51,7 @@ export default function HomePage() {
         <div aria-hidden className="rain" />
         <div data-parallax-wash aria-hidden className="absolute inset-0 bg-black opacity-0" />
       </ParallaxComponent>
-      <Hype eyebrow={hype.eyebrow} title={hype.title} lede={hype.lede} points={hype.points} />
+      <Hype eyebrow={hype.eyebrow} title={hype.title} lede={hype.lede} story={hype.story} points={hype.points} />
     </main>
   );
 }

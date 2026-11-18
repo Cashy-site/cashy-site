@@ -96,23 +96,23 @@ export function AboutCoin({ headline, story, pill, mascot, mascotAlt, printerLab
           <HeroCashy src={mascot} alt={mascotAlt} chipLabel={printerLabel} className="mx-auto w-[60%] max-w-[480px] lg:w-full" />
         </div>
 
-        <div className="mt-14 max-w-2xl md:mt-20">
+        <div className="mx-auto mt-14 max-w-3xl text-center md:mt-24">
           <RevealLine progress={progress} range={[0.5, 0.8]} className="block">
-            <p className="text-lg text-mist md:text-xl">
-              <span className="mb-3 block font-display text-[clamp(1.75rem,3vw,2rem)] leading-tight font-semibold text-paper">{opening}</span>
+            <p className="text-xl text-mist md:text-2xl">
+              <span className="mb-4 block font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-tight font-semibold text-balance text-paper">{opening}</span>
               {restOfFirst.join(" ")}
             </p>
           </RevealLine>
           {story.slice(1).map((paragraph, i) => (
-            <RevealLine key={paragraph} progress={progress} range={[0.58 + i * 0.08, Math.min(1, 0.86 + i * 0.06)]} className="mt-5 block text-lg text-mist md:text-xl">
+            <RevealLine key={paragraph} progress={progress} range={[0.58 + i * 0.08, Math.min(1, 0.86 + i * 0.06)]} className="mt-8 block text-xl text-mist md:text-2xl">
               {withPill(paragraph, pill)}
             </RevealLine>
           ))}
         </div>
 
-        <div className="mt-20 md:mt-28">
+        <div className="mt-24 text-center md:mt-32">
           <p className="inline-block rounded-full bg-paper px-6 py-2.5 font-display text-2xl font-extrabold tracking-[0.18em] text-blue uppercase md:px-8 md:py-3 md:text-4xl">{why.eyebrow}</p>
-          <ol className="mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
+          <ol className="mx-auto mt-10 grid max-w-3xl gap-6 md:grid-cols-2 md:gap-8">
             {why.cards.map((card, i) => (
               <li key={card.title} className="flex min-h-[16rem] flex-col items-center justify-center rounded-2xl border border-t-4 border-paper/10 border-t-blue bg-night/60 p-6 text-center md:aspect-square md:p-8">
                 <span aria-hidden className="block font-display text-6xl leading-none font-bold text-green md:text-7xl">
