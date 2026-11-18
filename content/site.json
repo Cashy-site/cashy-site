@@ -9,5 +9,6 @@
   "followLabel": "Follow on X",
   "telegramUrl": "",
   "footerLine": "Cash in. NVDA out.",
-  "disclaimer": "Cashy is a meme coin. Fees are shared with holders in NVDA stock; this is not a promised return. Cashy is not affiliated with Nvidia, Coinbase, Base or Feel.cash."
+  "disclaimer": "Cashy is a meme coin. Fees are shared with holders in NVDA stock; this is not a promised return. Cashy is not affiliated with Nvidia, Coinbase, Base or Feel.cash.",
+  "leaderboardApi": "https://api.cashy.world"
 }

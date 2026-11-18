@@ -32,7 +32,26 @@
         "playHref": "/arcade/cashy-tower",
         "embedUrl": "https://tower.cashy.world/",
         "hint": "Click the game, then use the keyboard: ← → or A D to move, Space, W or ↑ to jump.",
-        "phoneNote": "Phone controls are coming. For now, play on a computer."
+        "phoneNote": "Phone controls are coming. For now, play on a computer.",
+        "leaderboardId": "tower",
+        "boards": [
+          {
+            "id": "score",
+            "label": "Points",
+            "unit": "points"
+          },
+          {
+            "id": "floor",
+            "label": "Floors",
+            "unit": "floors"
+          },
+          {
+            "id": "combo",
+            "label": "Combo",
+            "unit": "floor combo"
+          }
+        ],
+        "prizes": "the top 3 on points, the highest floor and the best combo."
       },
       {
         "id": "cashy-invaders",
@@ -43,7 +62,16 @@
         "playLabel": "Play now",
         "playHref": "/arcade/cashy-invaders",
         "embedUrl": "https://invaders.cashy.world/",
-        "hint": "Click the game, then use the keyboard: ← → or A D to move, Space to throw cash, P to pause. On a phone, use the buttons under the game."
+        "hint": "Click the game, then use the keyboard: ← → or A D to move, Space to throw cash, P to pause. On a phone, use the buttons under the game.",
+        "leaderboardId": "invaders",
+        "boards": [
+          {
+            "id": "score",
+            "label": "Points",
+            "unit": "points"
+          }
+        ],
+        "prizes": "the top 3 on points."
       },
       {
         "id": "cashy-bubbles",
@@ -54,9 +82,36 @@
         "playLabel": "Play now",
         "playHref": "/arcade/cashy-bubbles",
         "embedUrl": "https://bubbles.cashy.world/",
-        "hint": "Click the game, then aim with ← → or the mouse and fire with Space or a click. P pauses. On a phone, drag to aim and let go to fire."
+        "hint": "Click the game, then aim with ← → or the mouse and fire with Space or a click. P pauses. On a phone, drag to aim and let go to fire.",
+        "leaderboardId": "bubbles",
+        "boards": [
+          {
+            "id": "score",
+            "label": "Points",
+            "unit": "points"
+          }
+        ],
+        "prizes": "the top 3 on points."
       }
-    ]
+    ],
+    "leaderboard": {
+      "title": "Leaderboard",
+      "week": "This week",
+      "all": "All time",
+      "resets": "Weekly boards reset Monday 00:00 UTC",
+      "resetsIn": "Resets in",
+      "loading": "Loading the board…",
+      "empty": "No runs on this board yet. Be the first.",
+      "offline": "The leaderboard is taking a break. Try again in a minute.",
+      "anonNote": "No sign-up needed. Add a name in the game whenever you like.",
+      "prizesTitle": "Weekly prizes",
+      "howTo": [
+        "Make the weekly top: {prizes}",
+        "Post your run on X with its run tag. The game's Share on X button writes it for you.",
+        "DM @cashybase your Leaderboard ID. We check it against your run and send the prize."
+      ],
+      "safety": "Your Leaderboard ID is private. Only ever send it to @cashybase. We never ask for seed phrases or payments."
+    }
   },
   "roadmap": {
     "title": "Roadmap",
