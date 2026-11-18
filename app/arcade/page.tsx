@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArcadeAnim } from "@/components/arcade/arcade-anim";
+import { ArcadeLeaderboards } from "@/components/arcade/arcade-leaderboards";
 import { BuyButton } from "@/components/ui/buy-button";
 import { FollowLink } from "@/components/ui/follow-link";
 import pages from "@/content/pages.json";
@@ -64,6 +65,8 @@ export default function ArcadePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={asset(mascot)} alt={mascotAlt} width={920} height={1030} className="mx-auto h-auto w-full max-w-[300px] md:max-w-[460px]" />
       </div>
+
+      <ArcadeLeaderboards />
     </main>
   );
 }
