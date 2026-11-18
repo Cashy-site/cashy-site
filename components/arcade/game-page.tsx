@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Leaderboard } from "@/components/arcade/leaderboard";
 import { GameFrame } from "@/components/game-frame";
 import pages from "@/content/pages.json";
 
@@ -20,6 +21,8 @@ export function GamePage({ game }: { game: Game }) {
 
         <p className="max-w-xl text-mist">{game.hint}</p>
         {"phoneNote" in game && <p className="max-w-xl text-sm text-mist/80 lg:hidden">{game.phoneNote}</p>}
+
+        <Leaderboard game={game.leaderboardId} boards={game.boards} prizes={game.prizes} />
       </div>
     </main>
   );
