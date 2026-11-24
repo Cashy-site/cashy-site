@@ -300,6 +300,110 @@ html.lenis body {
   animation-play-state: paused;
 }
 
+/* Printer: the NVDA Tower. Opacity and transform only; paused while off-screen. */
+.printer-scene {
+  container-type: size;
+}
+
+.printer-band {
+  animation: printer-band 3.2s ease-in-out infinite alternate;
+}
+
+.printer-win {
+  animation: printer-win 4.4s steps(1) infinite;
+}
+
+.printer-core {
+  animation: printer-core 2.4s ease-in-out infinite alternate;
+}
+
+.printer-halo {
+  animation: printer-halo 2.4s ease-in-out infinite alternate;
+}
+
+.printer-cashy {
+  transform-origin: 50% 100%;
+  animation: printer-sway 5.5s ease-in-out infinite;
+}
+
+.printer-fall {
+  opacity: 0;
+  animation: printer-fall 7.8s ease-in infinite;
+}
+
+.printer-scene.is-paused *,
+.printer-scene.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes printer-band {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes printer-win {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  70% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes printer-core {
+  from {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes printer-halo {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0.32;
+  }
+}
+
+/* A slow sway and a small bob, as if he's craning up at the crown. */
+@keyframes printer-sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.8deg);
+  }
+}
+
+@keyframes printer-fall {
+  0% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), 0) rotate(0deg) scale(0.6);
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x) + var(--dx)), 66cqh) rotate(var(--tilt)) scale(0.9);
+  }
+}
+
 /* Roadmap: Cashy hopping on the current stop. A short crouch, a hop, a squashy landing. */
 .jumping-cashy {
   transform-origin: 50% 100%;
@@ -392,6 +496,8 @@ html.lenis body {
   .neon-flicker,
   .neon-flicker-late,
   .hero-cashy *,
+  .printer-scene *,
+  .printer-scene,
   .jumping-cashy,
   .jumping-cashy-shadow {
     animation: none !important;

@@ -10,16 +10,23 @@ type ComingSoonProps = {
   mascot: string;
   /** Replaces the default Buy / Follow / Back buttons. */
   actions?: React.ReactNode;
+  /** Replaces the "Coming soon" line under the title. */
+  heading?: string;
+  /** Replaces the mascot picture. */
+  art?: React.ReactNode;
+  /** Extra content between the intro line and the list. */
+  extra?: React.ReactNode;
 };
 
-export function ComingSoon({ title, line, coming = [], mascot, actions }: ComingSoonProps) {
+export function ComingSoon({ title, line, coming = [], mascot, actions, heading = "Coming soon", art, extra }: ComingSoonProps) {
   return (
     <main className="relative isolate flex min-h-svh flex-col overflow-hidden bg-gradient-to-b from-ink via-night to-ink px-4 pb-16 pt-28 md:px-8 md:pt-36">
       <div className="mx-auto grid w-full max-w-[1200px] flex-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-6">
         <div>
           <h1 className="neon-word text-[clamp(3.5rem,13vw,9rem)]">{title}</h1>
-          <p className="neon-word mt-4 text-[clamp(2rem,6vw,3.75rem)]">Coming soon</p>
+          <p className="neon-word mt-4 text-[clamp(2rem,6vw,3.75rem)]">{heading}</p>
           <p className="mt-8 max-w-lg text-lg font-semibold text-paper md:text-xl">{line}</p>
+          {extra}
           {coming.length > 0 && (
             <ul className="mt-6 flex flex-col gap-2 text-mist">
               {coming.map((item) => (
@@ -43,9 +50,13 @@ export function ComingSoon({ title, line, coming = [], mascot, actions }: Coming
           </div>
         </div>
 
-        {/* TODO: final art. Temporary mascot, treatment baked by scripts/bake-mascot.py */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset(mascot)} alt="Cashy, a banknote in sunglasses and a leather jacket, crouching and pointing at you." width={979} height={982} className="mx-auto h-auto w-full max-w-[280px] md:max-w-[460px]" />
+        {art ?? (
+          <>
+            {/* TODO: final art. Temporary mascot, treatment baked by scripts/bake-mascot.py */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={asset(mascot)} alt="Cashy, a banknote in sunglasses and a leather jacket, crouching and pointing at you." width={979} height={982} className="mx-auto h-auto w-full max-w-[280px] md:max-w-[460px]" />
+          </>
+        )}
       </div>
     </main>
   );
