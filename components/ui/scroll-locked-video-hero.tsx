@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { BuyButton } from "@/components/ui/buy-button"
+import site from "@/content/site.json"
 import { isMenuOpen, setHeroLocked } from "@/lib/scroll-state"
 
 // ─────────────────────────────────────────────────────────────
@@ -471,6 +473,11 @@ export default function MetroHero({
           `}</style>
           <path d="M7 1 L7 17 M2 12 L7 17 L12 12" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
+      </div>
+
+      {/* Buy now, straight above Enter Base City. The wrapper centres it, so the button's own hover lift can't push it off-centre. */}
+      <div className="absolute left-1/2 -translate-x-1/2" style={{ bottom: "calc(clamp(24px, 6vh, 48px) + 64px + 56px)" }}>
+        <BuyButton label={site.buyNowLabel} className="h-12 px-8 text-base" />
       </div>
 
       {enterHref && (

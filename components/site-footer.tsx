@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { isActive, NavLink } from "@/components/nav-link";
 import { BuyButton } from "@/components/ui/buy-button";
+import { ContractAddress } from "@/components/ui/contract-address";
 import { Wordmark } from "@/components/ui/wordmark";
 import nav from "@/content/nav.json";
 import site from "@/content/site.json";
@@ -20,6 +21,8 @@ export function SiteFooter() {
         <div>
           <Wordmark className="text-5xl md:text-6xl" />
           <p className="mt-3 max-w-md text-lg text-mist">{site.footerLine}</p>
+          <p className="mt-6 text-sm font-semibold text-paper">Official address</p>
+          <ContractAddress className="mt-2 max-w-xl" />
         </div>
         <div className="flex flex-col gap-8 md:items-end">
           <nav aria-label="Footer">

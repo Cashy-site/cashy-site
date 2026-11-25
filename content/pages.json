@@ -8,7 +8,9 @@
       "Payday history",
       "Print my receipt"
     ],
-    "mascot": "/art/cashy-crouching.webp"
+    "mascot": "/art/cashy-crouching.webp",
+    "comingTitle": "Payday is NVDA day",
+    "sceneAlt": "Cashy at the foot of the NVDA Tower, a green-lit tower crowned with a giant chip, looking up at it."
   },
   "arcade": {
     "title": "Arcade",

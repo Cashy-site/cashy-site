@@ -13,7 +13,7 @@ const PRINTS = [
   { kind: "chip", x: 24, delay: 4, tilt: 14 },
 ] as const;
 
-function Note() {
+export function Note() {
   return (
     <svg viewBox="0 0 52 28" width="52" height="28" aria-hidden>
       <rect x="1" y="1" width="50" height="26" rx="3" fill="#a9dd8c" stroke="#2f5a24" strokeWidth="2" />
@@ -26,7 +26,7 @@ function Note() {
   );
 }
 
-function Chip({ label }: { label: string }) {
+export function Chip({ label }: { label: string }) {
   return (
     <svg viewBox="0 0 44 44" width="44" height="44" aria-hidden>
       <g stroke="#c7c7ff" strokeWidth="2.5" strokeLinecap="round">

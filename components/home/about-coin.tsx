@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef, useSyncExternalStore } from "react";
 import { HeroCashy } from "@/components/home/hero-cashy";
+import { BuyButton } from "@/components/ui/buy-button";
+import { ContractAddress } from "@/components/ui/contract-address";
 
 function useReducedMotionPreference() {
   const query = "(prefers-reduced-motion: reduce)";
@@ -85,14 +87,23 @@ export function AboutCoin({ headline, story, pill, mascot, mascotAlt, printerLab
         />
 
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-8">
-          <h2 className="font-display text-[clamp(3.25rem,10.5vw,9rem)] font-semibold leading-[0.98] text-balance text-paper lg:text-[clamp(4rem,7.6vw,9rem)]">
-            {headline.map((line, i) => (
-              // Blur only from tablet up: it's the one effect here that costs phones frames.
-              <RevealLine key={line} progress={progress} range={[i * step, i * step + 0.4]} className="block md:[filter:blur(var(--reveal-blur))]">
-                {line}
-              </RevealLine>
-            ))}
-          </h2>
+          <div>
+            <h2 className="font-display text-[clamp(3.25rem,10.5vw,9rem)] font-semibold leading-[0.98] text-balance text-paper lg:text-[clamp(4rem,7.6vw,9rem)]">
+              {headline.map((line, i) => (
+                // Blur only from tablet up: it's the one effect here that costs phones frames.
+                <RevealLine key={line} progress={progress} range={[i * step, i * step + 0.4]} className="block md:[filter:blur(var(--reveal-blur))]">
+                  {line}
+                </RevealLine>
+              ))}
+            </h2>
+            <div className="mt-8">
+              <p className="text-base text-mist md:text-lg">
+                <span className="font-display font-bold text-green">Now live.</span> Official address:
+              </p>
+              <ContractAddress className="mt-3" />
+              <BuyButton className="mt-5 h-14 px-8 text-xl" />
+            </div>
+          </div>
           <HeroCashy src={mascot} alt={mascotAlt} chipLabel={printerLabel} className="mx-auto w-[60%] max-w-[480px] lg:w-full" />
         </div>
 
